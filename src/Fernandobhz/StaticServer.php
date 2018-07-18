@@ -186,4 +186,27 @@ Class StaticServer {
 	];
 }
 
+/* web.config
+	<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<system.web>
+	<customErrors mode="Off" />
+</system.web>
+<system.webServer>
+  <rewrite>
+		<rules>
+			<rule name="Main Rule" stopProcessing="true">
+				<match url=".*" />
+				<conditions logicalGrouping="MatchAll">
+					<add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+					<add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+				</conditions>
+				<action type="Rewrite" url="index.php" />
+			</rule>
+		</rules>
+	</rewrite>
+
+</system.webServer>
+</configuration>
+*/
 ?>
